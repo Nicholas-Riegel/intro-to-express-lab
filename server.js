@@ -75,9 +75,9 @@ if (type && minPrice && maxPrice){
     })
 } else if (type && maxPrice){
     shoes.forEach(x => {
-        if (x.type === type && x.price < maxPrice)
+        if (x.type === type && x.price <= maxPrice)
         list.push(x.name)
-})
+    })
 } else if (minPrice && maxPrice){
     shoes.forEach(x => {
         if (x.price >= minPrice && x.price <= maxPrice){
@@ -92,13 +92,13 @@ if (type && minPrice && maxPrice){
     })
 } else if (minPrice){
     shoes.forEach(x => {
-        if (x.price > minPrice){
+        if (x.price >= minPrice){
             list.push(x.name)
         }
     })
 } else if (maxPrice){
     shoes.forEach(x => {
-        if (x.price < maxPrice){
+        if (x.price <= maxPrice){
             list.push(x.name)
         }
     })
