@@ -13,7 +13,7 @@ app.get('/roll/:number', (req, res)=>{
 
     if (input && typeof input === 'number'){
 
-        const answer = Math.floor(Math.random() * input)
+        const answer = Math.floor(Math.random() * (input -1)) + 1
 
         res.send(`<p>You rolled a ${answer}!</p>`)
 
