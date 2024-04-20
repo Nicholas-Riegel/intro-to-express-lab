@@ -61,52 +61,52 @@ app.get('/shoes', (req, res)=>{
     const list = []
     let string = ''
 
-if (type && minPrice && maxPrice){
-    shoes.forEach(x => {
-        if (x.type === type && x.price >= minPrice && x.price <= maxPrice){
+    if (type && minPrice && maxPrice){
+        shoes.forEach(x => {
+            if (x.type === type && x.price >= minPrice && x.price <= maxPrice){
+                list.push(x.name)
+            }
+        })
+    } else if (type && minPrice){
+        shoes.forEach(x => {
+            if (x.type === type && x.price >= minPrice){
+                list.push(x.name)
+            }
+        })
+    } else if (type && maxPrice){
+        shoes.forEach(x => {
+            if (x.type === type && x.price <= maxPrice)
             list.push(x.name)
-        }
-    })
-} else if (type && minPrice){
-    shoes.forEach(x => {
-        if (x.type === type && x.price >= minPrice){
+        })
+    } else if (minPrice && maxPrice){
+        shoes.forEach(x => {
+            if (x.price >= minPrice && x.price <= maxPrice){
+                list.push(x.name)
+            }
+        })
+    } else if (type){
+        shoes.forEach(x => {
+            if (x.type === type){
+                list.push(x.name)
+            }
+        })
+    } else if (minPrice){
+        shoes.forEach(x => {
+            if (x.price >= minPrice){
+                list.push(x.name)
+            }
+        })
+    } else if (maxPrice){
+        shoes.forEach(x => {
+            if (x.price <= maxPrice){
+                list.push(x.name)
+            }
+        })
+    } else {
+        shoes.forEach(x => (
             list.push(x.name)
-        }
-    })
-} else if (type && maxPrice){
-    shoes.forEach(x => {
-        if (x.type === type && x.price <= maxPrice)
-        list.push(x.name)
-    })
-} else if (minPrice && maxPrice){
-    shoes.forEach(x => {
-        if (x.price >= minPrice && x.price <= maxPrice){
-            list.push(x.name)
-        }
-    })
-} else if (type){
-    shoes.forEach(x => {
-        if (x.type === type){
-            list.push(x.name)
-        }
-    })
-} else if (minPrice){
-    shoes.forEach(x => {
-        if (x.price >= minPrice){
-            list.push(x.name)
-        }
-    })
-} else if (maxPrice){
-    shoes.forEach(x => {
-        if (x.price <= maxPrice){
-            list.push(x.name)
-        }
-    })
-} else {
-    shoes.forEach(x => (
-        list.push(x.name)
-    ))
-}
+        ))
+    }
 
     list.forEach(x => {
         string += `<li>${x}</li>`
@@ -115,6 +115,8 @@ if (type && minPrice && maxPrice){
     res.send(`<ul>${string}</ul>`)
 })
 
-app.listen(3000, ()=>{
-    console.log(`App listening on port ${3000}`);
+const port = 3000;
+
+app.listen(port, ()=>{
+    console.log(`App listening on port ${port}`);
 })
