@@ -75,8 +75,9 @@ app.get('/shoes', (req, res)=>{
         })
     } else if (type && maxPrice){
         shoes.forEach(x => {
-            if (x.type === type && x.price <= maxPrice)
-            list.push(x.name)
+            if (x.type === type && x.price <= maxPrice){
+                list.push(x.name)
+            }
         })
     } else if (minPrice && maxPrice){
         shoes.forEach(x => {
